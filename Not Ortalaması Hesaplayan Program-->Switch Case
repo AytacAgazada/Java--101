@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class notortalama {
+    public static void main(String[] args) {
+        //deyishenleri teyin et
+        int math,fizik,kimya,turkche,tarih,muzik;
+        //scanneri tanimla
+        Scanner not=new Scanner(System.in);
+        System.out.print("Matematik Notunuz: ");
+        math=not.nextInt();
+
+        System.out.print("Fizik Notunuz: ");
+        fizik=not.nextInt();
+
+        System.out.print("Kimya Notunuz: ");
+        kimya=not.nextInt();
+
+        System.out.print("Turkche Notunuz: ");
+        turkche=not.nextInt();
+
+        System.out.print("Tarih Notunuz: ");
+        tarih=not.nextInt();
+
+        System.out.print("Mwzik Notunuz: ");
+        muzik=not.nextInt();
+        int toplam=(math+fizik+kimya+turkche+tarih+muzik);
+        //neticeni tam dogru olmasi icin double
+        double sonuc=toplam/6.0;
+        System.out.println("Ortalamaniz: " +sonuc);
+        switch ((int)sonuc/10){
+            case 10,9,8,7,6:
+                System.out.println("Sinifi gecti!");
+                break;
+            default:
+                System.out.println("Sinifta kaldi!");
