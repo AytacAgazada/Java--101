@@ -1,0 +1,31 @@
+
+import java.util.Scanner;
+
+public class manav{
+    public static void main(String[] args) {
+       String[] meyveler={"Armut", "Elma", "Domates", "Muz", "Patlıcan"};
+       double[] fiyatlar={2.14, 3.67, 1.11, 0.95, 5.00};
+       double armutkg,elmakg,domateskg,muzkg,patlicankg;
+       Scanner input=new Scanner(System.in);
+
+       System.out.print("Armut Kaç Kilo ? :");
+       armutkg= input.nextDouble();
+
+        System.out.print("Elma Kaç Kilo ? :");
+        elmakg= input.nextDouble();
+
+        System.out.print("Domates Kaç Kilo ? :");
+        domateskg= input.nextDouble();
+
+        System.out.print("Muz Kaç Kilo ? :");
+        muzkg= input.nextDouble();
+
+        System.out.print("Patlıcan Kaç Kilo ? :");
+        patlicankg= input.nextDouble();
+        double toplamTutar = armutkg * fiyatlar[0] + elmakg * fiyatlar[1] + domateskg * fiyatlar[2] +
+                muzkg * fiyatlar[3] + patlicankg * fiyatlar[4];
+
+        System.out.println("Toplam Tutar : " + String.format("%.2f", toplamTutar) + " TL");
+
+    }
+}
