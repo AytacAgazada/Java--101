@@ -1,0 +1,21 @@
+
+import java.util.Scanner;
+public class hipotenüsbulmak {
+    public static void main(String[] args) {
+        double a,b;
+        Scanner kenar=new Scanner(System.in);
+
+        System.out.print("Dik üçgenin ilk kenarını girin: ");
+        a=kenar.nextInt();
+
+        System.out.print("Dik üçgenin ikinci kenarını girin: ");
+        b=kenar.nextInt();
+
+        double c = Math.sqrt(a * a + b * b);
+        System.out.println("Hipotenüs: " + c);
+
+
+
+
+    }
+}
