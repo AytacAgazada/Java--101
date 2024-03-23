@@ -1,0 +1,24 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        double r,a,pi=3.14;
+        Scanner input=new Scanner(System.in);
+
+        System.out.print("Cevrenin yari capi (r): ");
+        r=input.nextInt();
+
+        System.out.print("Merkez açısının ölçüsü (a): ");
+        a=input.nextInt();
+
+        double alan =(pi * (r*r) * a)/ 360;
+        System.out.println("Dairenin alani: " +alan);
+
+        double cevrealan=pi*r*r;
+        System.out.println("Cevrenin alani: " +cevrealan);
+
+        double cevre=2*pi*r;
+        System.out.println("Dairenin cevresi: " +cevre);
+
+    }
+
+}
