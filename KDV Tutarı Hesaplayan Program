@@ -1,0 +1,20 @@
+
+import java.util.Scanner;
+public class kdvutari {
+    public static void main(String[] args) {
+        double tutar,kdvoran=0.18,kdvtutar,kdvlitutar;
+        Scanner paraMiktari=new Scanner(System.in);
+        System.out.print("Para miktarını girin: ");
+        tutar=paraMiktari.nextInt();
+        kdvtutar=tutar*kdvoran;
+        kdvlitutar=tutar+kdvtutar;
+        System.out.println("KDV'siz Fiyat: " + tutar);
+        System.out.println("KDV Oranı: %" + (kdvoran * 100));
+        System.out.println("KDV Tutarı: " + kdvtutar);
+        System.out.println("KDV'li Fiyat: " + kdvlitutar);
+
+
+
+    }
+
+}
