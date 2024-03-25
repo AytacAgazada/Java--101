@@ -1,0 +1,41 @@
+*******
+import java.util.Scanner;
+public class calculyator {
+    public static void main(String[] args){
+        int n1,n2,select;
+        Scanner input=new Scanner(System.in);
+        System.out.print("Ilk sayi girin :");
+        n1=input.nextInt();
+        System.out.print("Ikinci sayi girin:");
+        n2= input.nextInt();
+
+        System.out.println("1-toplama\n2-çıxma\n3-vurma\n4-bölmə");
+        System.out.print("Seçiniz :");
+        select= input.nextInt();
+
+        switch (select){
+            case 1:
+                System.out.print("Topmlam:"+(n1+n2));
+                break;
+            case 2:
+                System.out.print("Çıxma:"+(n1-n2));
+                break;
+            case 3:
+                System.out.print("Vurma:"+(n1*n2));
+                break;
+            case 4:
+                if (n2 != 0) {
+                    System.out.print("Bölme: " + (n1 / n2));
+                } else {
+                    System.out.println("Bir sayıyı sıfıra bölemezsiniz!");
+                }
+                break;
+            default:
+                System.out.print("Səhv seçim etmisiniz...");
+        }
+
+    }
+
+
+
+}
