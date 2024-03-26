@@ -1,0 +1,38 @@
+
+
+import java.util.Scanner;
+
+public class  KullaniciGirishi {
+    public static void main(String[] args) {
+        String username, password;
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter a username: ");
+        username = input.nextLine();
+
+        System.out.print("Enter your code: ");
+        password = input.nextLine();
+
+        String newpassword = null;
+
+        if (username.equals("username") && password.equals("password123456")) {
+            System.out.println("You are logged in.");
+        } else {
+            System.out.println("Your information is incorrect!");
+            System.out.println("Do you want to update your password?? (Yes/No)");
+            String answer = input.nextLine();
+            if (answer.equalsIgnoreCase("Yes")) {
+                System.out.print("Enter the new password:");
+                newpassword = input.nextLine();
+                System.out.println("Password created!");
+            } else {
+                System.out.println("Login failed! Type 'yes' to reset your password.");
+            }
+        }
+
+        System.out.println("Your username: :" +username);
+        System.out.println("New password: "+newpassword );
+
+
+    }
+}
