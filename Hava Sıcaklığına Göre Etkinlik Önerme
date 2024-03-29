@@ -1,0 +1,23 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        int heat;
+        Scanner input=new Scanner(System.in);
+        System.out.print("Hava sıcaklığın bildirin:");
+        heat= input.nextInt();
+
+        if (heat<5){
+            System.out.print("Size kayak yapmayı öneririz");
+        } else if (heat>=5 || heat<15){
+            System.out.print("Size sinemaya gitmeyi öneririz");
+
+        }else if (heat>=15 || heat<25){
+            System.out.print("Size piknik yapmayı öneririz");
+
+        }else{
+            System.out.print("Size yüzme etkinliği öneririz");
+        }
+
+    }
+
+}
