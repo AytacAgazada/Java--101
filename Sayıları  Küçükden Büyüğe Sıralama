@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        int sayi1,sayi2,sayi3;
+        Scanner input=new Scanner(System.in);
+        System.out.print("Ilk sayınızı daxil edin: ");
+        sayi1= input.nextInt();
+        System.out.print("Ikinci sayınızı daxil edin: ");
+        sayi2=input.nextInt();
+        System.out.print("Üçüncü sayınızı girin: ");
+        sayi3= input.nextInt();
+        int minSayi,maxSayi,ortaSayi;
+        if (sayi1 <= sayi2 && sayi1 <= sayi3) {
+            minSayi = sayi1;
+            ortaSayi = (sayi2 <= sayi3) ? sayi2 : sayi3;
+            maxSayi = (sayi2 <= sayi3) ? sayi3 : sayi2;
+        } else if (sayi2 <= sayi1 && sayi2 <= sayi3) {
+            minSayi = sayi2;
+            ortaSayi = (sayi1 <= sayi3) ? sayi1 : sayi3;
+            maxSayi = (sayi1 <= sayi3) ? sayi3 : sayi1;
+        } else {
+            minSayi = sayi3;
+            ortaSayi = (sayi1 <= sayi2) ? sayi1 : sayi2;
+            maxSayi = (sayi1 <= sayi2) ? sayi2 : sayi1;
+        }
+        System.out.println("Küçükten büyüğe sıralanmış hali: " + minSayi + " < " + ortaSayi + " <" + maxSayi);
+
+    }
+
+}
