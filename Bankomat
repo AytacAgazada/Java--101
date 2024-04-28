@@ -1,0 +1,96 @@
+
+import java.util.Scanner;
+
+public class bankomat {
+    public static void main(String[] args) {
+        int parol, tekrar_parol, mebleg;
+        double Balans = 27050.3;
+        final int MAX_DENEME = 5;
+        int parol_daxiletmek = 0;
+
+        Scanner input = new Scanner(System.in);
+        Scanner cavab = new Scanner(System.in);
+
+        while (parol_daxiletmek < MAX_DENEME) {
+            System.out.print("Parolunuzu daxil edin: ");
+            parol = input.nextInt();
+
+            System.out.print("Parolunuzu tekrar daxil edin: ");
+            tekrar_parol = input.nextInt();
+
+            if (parol == tekrar_parol) {
+                System.out.println("Hansi emeliyyati yerine yetirmek isteyirsiniz? (Balansi goster/Medaxil/Mexaric/Cixish)");
+                String emeliyyat = cavab.nextLine();
+
+                if (emeliyyat.equalsIgnoreCase("balansi goster")) {
+                    System.out.println("Balansiniz: " + Balans);
+                    System.out.println("Medaxil, Mexaric, Cixish emeliyyatlarindan birini secin:");
+                    String yeniEmeliyyat = cavab.nextLine();
+
+                    if (yeniEmeliyyat.equalsIgnoreCase("medaxil")) {
+                        System.out.print("Meblegi daxil edin: ");
+                        mebleg = input.nextInt();
+                        Balans += mebleg;
+                        System.out.println("Son Balans: " + Balans);
+                        break;
+
+                    } else if (yeniEmeliyyat.equalsIgnoreCase("mexaric")) {
+                        System.out.print("Meblegi daxil edin: ");
+                        mebleg = input.nextInt();
+
+                        if (mebleg > Balans) {
+                            System.out.println("Balans kifayet qeder deyil!");
+
+                        } else {
+                            Balans -= mebleg;
+                            System.out.println("Son Balans: " + Balans);
+                        }
+                        break;
+
+                    } else if (yeniEmeliyyat.equalsIgnoreCase("cixish")) {
+                        System.out.println("Sistemden çıxış edildi.");
+                        break;
+
+                    } else {
+                        System.out.println("Yanlış emeliyyat!");
+                        break;
+                    }
+
+                } else if (emeliyyat.equalsIgnoreCase("Medaxil") || emeliyyat.equalsIgnoreCase("Mexaric")) {
+                    System.out.print("Meblegi daxil edin: ");
+                    mebleg = input.nextInt();
+
+                    if (emeliyyat.equalsIgnoreCase("Medaxil")) {
+                        Balans += mebleg;
+                        System.out.println("Son Balans: " + Balans);
+                        break;
+
+                    } else if (emeliyyat.equalsIgnoreCase("Mexaric")) {
+                        Balans -= mebleg;
+                        System.out.println("Son Balans: " + Balans);
+                        if (mebleg > Balans) {
+                            System.out.println("Balans kifayet qeder deyil!");
+
+                        } else {
+                            Balans -= mebleg;
+                            System.out.println("Yeni Balans: " + Balans);
+                        }
+                        break;
+                    }
+
+                } else {
+                    System.out.print("Sistemden cixish edildi!");
+                    break;
+                }
+
+            } else {
+                parol_daxiletmek++;
+                System.out.println("Yanlısh parol. Qalan daxil etme haqqi: " + (MAX_DENEME - parol_daxiletmek));
+            }
+        }
+
+        if (parol_daxiletmek == MAX_DENEME) {
+            System.out.println("Maksimum deneme etdiniz. Emeliyyat dayandirildi.");
+        }
+    }
+}
