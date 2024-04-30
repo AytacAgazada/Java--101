@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class bankomat {
     public static void main(String[] args) {
-        int parol, tekrar_parol, mebleg;
+        int parol, tekrar_parol;
+        double mebleg;
         double Balans = 27050.3;
         final int MAX_DENEME = 5;
         int parol_daxiletmek = 0;
@@ -11,9 +12,10 @@ public class bankomat {
         Scanner input = new Scanner(System.in);
         Scanner cavab = new Scanner(System.in);
 
+        System.out.print("Parolunuzu daxil edin: ");
+        parol = input.nextInt();
+
         while (parol_daxiletmek < MAX_DENEME) {
-            System.out.print("Parolunuzu daxil edin: ");
-            parol = input.nextInt();
 
             System.out.print("Parolunuzu tekrar daxil edin: ");
             tekrar_parol = input.nextInt();
@@ -29,14 +31,14 @@ public class bankomat {
 
                     if (yeniEmeliyyat.equalsIgnoreCase("medaxil")) {
                         System.out.print("Meblegi daxil edin: ");
-                        mebleg = input.nextInt();
+                        mebleg = input.nextDouble();
                         Balans += mebleg;
                         System.out.println("Son Balans: " + Balans);
                         break;
 
                     } else if (yeniEmeliyyat.equalsIgnoreCase("mexaric")) {
                         System.out.print("Meblegi daxil edin: ");
-                        mebleg = input.nextInt();
+                        mebleg = input.nextDouble();
 
                         if (mebleg > Balans) {
                             System.out.println("Balans kifayet qeder deyil!");
@@ -58,7 +60,7 @@ public class bankomat {
 
                 } else if (emeliyyat.equalsIgnoreCase("Medaxil") || emeliyyat.equalsIgnoreCase("Mexaric")) {
                     System.out.print("Meblegi daxil edin: ");
-                    mebleg = input.nextInt();
+                    mebleg = input.nextDouble();
 
                     if (emeliyyat.equalsIgnoreCase("Medaxil")) {
                         Balans += mebleg;
