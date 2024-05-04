@@ -1,0 +1,46 @@
+package projeler;
+import java.util.Scanner;
+public class ucak {
+    public static void main (String[] args){
+        int yash, km;
+        double yash_indirimi = 0;
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Yaşınızı giriniz: ");
+        yash = input.nextInt();
+
+        System.out.print("Mesafeyi km türünden giriniz: ");
+        km = input.nextInt();
+
+        int normalTutar = (int) (km * 0.10);
+
+
+         if (yash<12){
+             yash_indirimi=0.50;
+         } else if (yash>=12 && yash<=24) {
+             yash_indirimi=0.10;
+         }else if (yash>65){
+             yash_indirimi=0.30;
+         }
+       
+        int yasIndirimliTutar = (int) (normalTutar - (normalTutar * yash_indirimi));
+         double toplamTutar=0;
+
+         System.out.print("Yolculuk tipini giriniz,(1(Tek Yön)/2(Gidiş Dönüş )):");
+         int cavab=input.nextInt();
+
+         if(cavab==1){
+             toplamTutar = yasIndirimliTutar;
+
+         } else if (cavab==2) {
+             double gidişDönüşIndirimi = yasIndirimliTutar * 0.20;
+             toplamTutar = (yasIndirimliTutar - gidişDönüşIndirimi) * 2;
+         }else {
+             System.out.print("Hatalı Veri Girdiniz !");
+             return;
+         }
+        System.out.print("Toplam tutar=" + toplamTutar + " Tl");
+
+
+    }
+}
