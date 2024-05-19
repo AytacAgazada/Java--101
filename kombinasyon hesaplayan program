@@ -1,0 +1,36 @@
+
+import java.util.Scanner;
+
+public class code {
+    public static void main (String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int n,r;
+
+        System.out.print("Kümenin eleman sayısı: ");
+        n= input.nextInt();
+
+        System.out.print("Seçilecek eleman sayısı: ");
+        r= input.nextInt();
+
+        // C(n,r) hesaplanması
+        int c = calculateCombination(n, r);
+
+        // Sonucun yazdırılması
+        System.out.println("C(n,r) = " + c);
+    }
+
+    // Kombinasyon hesaplama fonksiyonu
+    private static int calculateCombination(int n, int r) {
+        return factorial(n) / (factorial(r) * factorial(n - r));
+    }
+
+    // Faktoriyel hesaplama fonksiyonu
+    private static int factorial(int num) {
+        if (num <= 1) {
+            return 1;
+        }
+        return num * factorial(num - 1);
+    }
+
+    }
