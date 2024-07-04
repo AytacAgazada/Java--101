@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class code {
+    public static void main(String[] args) {
+        Scanner input=new Scanner(System.in);
+        //max && min
+        System.out.print("Kaç tane sayı gireceksiniz: ");
+        int a=input.nextInt();
+        if (a <= 0) {
+            System.out.println("Lütfen geçerli bir sayı giriniz.");
+            return;
+        }
+
+        System.out.print("1. Sayıyı giriniz: ");
+        int n = input.nextInt();
+
+        // İlk sayıyı hem en küçük hem de en büyük olarak belirle
+        int min = n;
+        int max = n;
+
+        for (int i=2;i<=a;i++){
+            System.out.print(i+"."+" Sayıyı giriniz: ");
+            n = input.nextInt();
+            if (n > max) {
+                max = n;
+            }
+
+            if (n < min) {
+                min = n;
+            }
+        }
+
+        System.out.println("En büyük sayı: " + max);
+        System.out.println("En küçük sayı: " + min);
+
+
+
+
+        }
