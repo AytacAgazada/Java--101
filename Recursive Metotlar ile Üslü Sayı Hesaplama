@@ -1,0 +1,29 @@
+package sadeler;
+import java.util.Scanner;
+import java.util.concurrent.RecursiveAction;
+public class PatikaDev {
+    //Recursive Metotlar ile Üslü Sayı Hesaplama
+
+    public static class Main {
+        public static int power(int base, int exponent) {
+
+            if (exponent == 0) {
+                return 1;
+            }
+
+            return base * power(base, exponent - 1);
+        }
+
+        public static void main(String[] args) {
+            Scanner scan = new Scanner(System.in);
+            System.out.print("Sayı giriniz :");
+            int base = scan.nextInt();
+            System.out.print("Üst sayı giriniz: ");
+            int exponent = scan.nextInt();
+            int result = power(base, exponent);
+            System.out.println(base + "^" + exponent + " = " + result);
+        }
+    }
+
+
+}
