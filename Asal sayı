@@ -1,0 +1,38 @@
+package sadeler;
+import java.util.Scanner;
+import java.util.concurrent.RecursiveAction;
+
+public class PatikaDev {
+    public static class Main{
+        public static boolean isPrime(int number, int divisor) {
+            // Temel durumlar
+            if (number <= 1) {
+                return false;
+            }
+            if (divisor == 1) {
+                return true;
+            }
+
+            if (number % divisor == 0) {
+                return false;
+            }
+
+            return isPrime(number, divisor - 1);
+        }
+
+        public static void main(String[] args) {
+            Scanner scan = new Scanner(System.in);
+            System.out.print("Sayı giriniz : ");
+            int number = scan.nextInt();
+            scan.close();
+
+            boolean prime = isPrime(number, number / 2);
+
+            if (prime) {
+                System.out.println(number + " asal sayıdır.");
+            } else {
+                System.out.println(number + " asal sayı değildir.");
+            }
+        }
+    }
+}
