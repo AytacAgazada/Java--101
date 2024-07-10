@@ -1,0 +1,87 @@
+package sadeler;
+
+class Employee {
+    String name;
+    double salary;
+    int workHouse;
+    int hireYear;
+    double tax;
+    double bonusfee;
+    double RaiseSalary;
+
+    public Employee(String name, double salary, int workHouse, int hireYear) {
+        this.name = name;
+        this.salary = salary;
+        this.workHouse = workHouse;
+        this.hireYear = hireYear;
+    }
+
+    public void calculateTax() {
+        double taxInterest = 0.03;
+        if (salary >= 1000) {
+            tax = salary * taxInterest;
+        } else {
+            tax = 0;
+        }
+    }
+
+    public void calculateBonus() {
+        if (workHouse > 40) {
+            bonusfee = (workHouse - 40) * 30;
+        } else {
+            bonusfee = 0;
+        }
+    }
+
+    public void raiseSalary() {
+        int currentYear = 2021;
+        int yearsWorked = currentYear - hireYear;
+        if (yearsWorked < 10) {
+            RaiseSalary = salary * 0.05;
+        } else if (yearsWorked < 20) {
+            RaiseSalary = salary * 0.1;
+        } else {
+            RaiseSalary = salary * 0.15;
+        }
+        salary += RaiseSalary;
+    }
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Tax: ").append(tax).append("\n");
+        sb.append("Bonus: ").append(bonusfee).append("\n");
+        sb.append("Raise Salary: ").append(RaiseSalary).append("\n");
+        sb.append("Total Salary: ").append(salary + bonusfee - tax).append("\n");
+        return sb.toString();
+    }
+}
+
+/////////
+
+package sadeler;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Name : ");
+        String name = scanner.nextLine();
+
+        System.out.print("Salary : ");
+        double salary = scanner.nextDouble();
+
+        System.out.print("Hire year : ");
+        int hireYear = scanner.nextInt();
+
+        System.out.print("Working Hourse : ");
+        int workHouse = scanner.nextInt();
+
+        Employee employee = new Employee(name, salary, workHouse, hireYear);
+        employee.calculateTax();
+        employee.calculateBonus();
+        employee.raiseSalary();
+
+        System.out.print(employee);
+
+    }
+}
+
