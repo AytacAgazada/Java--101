@@ -1,0 +1,26 @@
+package sadeler;
+import java.util.Arrays;
+import java.util.Scanner;
+public class Array {
+    public static void main(String[] args) {
+
+        char[][] letterB = new char[7][5];
+        
+        for (int i = 0; i < letterB.length; i++) {
+            for (int j = 0; j < letterB[i].length; j++) {
+                if (j == 0 || (j == 4 && (i != 0 && i != 3 && i != 6)) || ((i == 0 || i == 3 || i == 6) && (j > 0 && j < 4))) {
+                    letterB[i][j] = '*';
+                } else {
+                    letterB[i][j] = ' ';
+                }
+            }
+        }
+
+        for (int i = 0; i < letterB.length; i++) {
+            for (int j = 0; j < letterB[i].length; j++) {
+                System.out.print(letterB[i][j]);
+            }
+            System.out.println();
+        }
+    }
+}
