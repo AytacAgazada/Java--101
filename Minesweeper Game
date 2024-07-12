@@ -1,0 +1,148 @@
+package sadeler;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Minesweeper {
+
+    private char[][] board;
+    private boolean[][] revealed;
+    private int rows;
+    private int cols;
+    private int numMines;
+    private boolean gameOver;
+
+    public Minesweeper(int rows, int cols, int numMines) {
+        this.rows = rows;
+        this.cols = cols;
+        this.numMines = numMines;
+        this.board = new char[rows][cols];
+        this.revealed = new boolean[rows][cols];
+        this.gameOver = false;
+
+        // Initialize the board with empty spaces
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                board[i][j] = '-';
+                revealed[i][j] = false;
+            }
+        }
+
+        // Randomly place the mines
+        Random random = new Random();
+        for (int i = 0; i < numMines; i++) {
+            int row, col;
+            do {
+                row = random.nextInt(rows);
+                col = random.nextInt(cols);
+            } while (board[row][col] == '*');
+            board[row][col] = '*';
+        }
+
+        // Calculate the number of adjacent mines for each cell
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (board[i][j] != '*') {
+                    int count = 0;
+                    for (int k = -1; k <= 1; k++) {
+                        for (int l = -1; l <= 1; l++) {
+                            int newRow = i + k;
+                            int newCol = j + l;
+                            if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && board[newRow][newCol] == '*') {
+                                count++;
+                            }
+                        }
+                    }
+                    board[i][j] = (char) (count + '0');
+                }
+            }
+        }
+    }
+
+    public void printBoard() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (revealed[i][j]) {
+                    System.out.print(board[i][j] + " ");
+                } else {
+                    System.out.print("- ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public void play() {
+        Scanner scanner = new Scanner(System.in);
+        while (!gameOver) {
+            printBoard();
+            System.out.print("Satır Giriniz: ");
+            int row = scanner.nextInt();
+            System.out.print("Sütun Giriniz: ");
+            int col = scanner.nextInt();
+
+            if (row < 0 || row >= rows || col < 0 || col >= cols) {
+                System.out.println("Geçersiz hamle, tekrar deneyin.");
+                continue;
+            }
+
+            if (board[row][col] == '*') {
+                System.out.println("Oyun bitti! Mayına bastınız.");
+                gameOver = true;
+            } else {
+                reveal(row, col);
+                if (checkWin()) {
+                    System.out.println("Tebrikler! Tüm mayınları temizlediniz.");
+                    gameOver = true;
+                }
+            }
+        }
+        printFinalBoard();
+    }
+
+    private void reveal(int row, int col) {
+        if (row < 0 || row >= rows || col < 0 || col >= cols || revealed[row][col]) {
+            return;
+        }
+
+        revealed[row][col] = true;
+
+        if (board[row][col] == '0') {
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    reveal(row + i, col + j);
+                }
+            }
+        }
+    }
+
+    private boolean checkWin() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (board[i][j] != '*' && !revealed[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void printFinalBoard() {
+        System.out.println("Son durum:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (board[i][j] == '*') {
+                    System.out.print("- ");
+                } else {
+                    System.out.print(board[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        Minesweeper game = new Minesweeper(10, 10, 10);
+        game.play();
+    }
+}
